@@ -1,5 +1,66 @@
 <gazebo>
+    <!-- Plugin for controlling the snake bot -->
     <plugin name="snake_bot_controller" filename="libsnake_bot_controller.so">
         <robotNamespace>/install/share/snake_bot</robotNamespace>
     </plugin>
+
+    <!-- Define modular links -->
+    <link name="link_1">
+        <visual>
+            <geometry>
+                <box>
+                    <size>0.5 0.1 0.1</size>
+                </box>
+            </geometry>
+            <material>
+                <script>
+                    <uri>file://media/materials/scripts/gazebo.material</uri>
+                    <name>Gazebo/Blue</name>
+                </script>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <box>
+                    <size>0.5 0.1 0.1</size>
+                </box>
+            </geometry>
+        </collision>
+    </link>
+
+    <link name="link_2">
+        <visual>
+            <geometry>
+                <box>
+                    <size>0.5 0.1 0.1</size>
+                </box>
+            </geometry>
+            <material>
+                <script>
+                    <uri>file://media/materials/scripts/gazebo.material</uri>
+                    <name>Gazebo/Red</name>
+                </script>
+            </material>
+        </visual>
+        <collision>
+            <geometry>
+                <box>
+                    <size>0.5 0.1 0.1</size>
+                </box>
+            </geometry>
+        </collision>
+    </link>
+
+    <!-- Define joints -->
+    <joint name="joint_1" type="revolute">
+        <parent>link_1</parent>
+        <child>link_2</child>
+        <axis>
+            <xyz>0 0 1</xyz>
+        </axis>
+        <limit>
+            <lower>-1.57</lower>
+            <upper>1.57</upper>
+        </limit>
+    </joint>
 </gazebo>
