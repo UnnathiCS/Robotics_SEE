@@ -1,0 +1,5 @@
+<gazebo>
+    <plugin name="snake_bot_controller" filename="libsnake_bot_controller.so">
+        <robotNamespace>/install/share/snake_bot</robotNamespace>
+    </plugin>
+</gazebo>
